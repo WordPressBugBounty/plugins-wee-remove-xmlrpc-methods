@@ -1,0 +1,1 @@
+# plugins-wee-remove-xmlrpc-methods
