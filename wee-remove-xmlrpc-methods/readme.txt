@@ -1,32 +1,35 @@
 === Remove XML-RPC Methods ===
 Contributors: walterebert
-Tags: xml-rpc
+Tags: xml-rpc, xmlrpc, security
 Requires at least: 4.6
 Tested up to: 6.6
 Requires PHP: 5.4.0
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPL-2.0-or-later
 License URI: https://spdx.org/licenses/GPL-2.0-or-later.html
 
-Remove all methods from the WordPress XML-RPC API.
+Remove all WordPress methods from the XML-RPC API to increase security.
 
 == Description ==
 
-The plugin removes all methods from the WordPress XML-RPC API. It is an alternative to just using the `xmlrpc_enabled` hook, because that is only used "To disable XML-RPC methods that require authentication".
+This plugin does more than just using the `xmlrpc_enabled` hook, because that is only used “To disable XML-RPC methods that require authentication”.
 
-Activating this plugin will disable pingbacks and trackbacks, because these rely on XML-RPC.
+Activating this plugin will also disable pingbacks, trackbacks, and Really Simple Discovery (RSD), because these rely on XML-RPC.
+
+It works with any webserver, because it does not use the .htaccess file.
 
 = Testing the plugin =
 
-From the command line you can test if the plugin is working correctly using [cURL](https://curl.haxx.se/):
+From the command line you can test if the plugin is working correctly using [cURL](https://curl.haxx.se/). Replace the `example.com` link to match your website:
 
 <pre><code>
-curl -d '&lt;?xml version="1.0"?&gt;&lt;methodCall&gt;&lt;methodName&gt;system.listMethods&lt;/methodName&gt;&lt;params&gt;&lt;param&gt;&lt;value&gt;&lt;string/&gt;&lt;/value&gt;&lt;/param&gt;&lt;/params&gt;&lt;/methodCall&gt;' https://&lt;your domain&gt;/xmlrpc.php
+curl -d '&lt;?xml version="1.0"?&gt;&lt;methodCall&gt;&lt;methodName&gt;system.listMethods&lt;/methodName&gt;&lt;params&gt;&lt;param&gt;&lt;value&gt;&lt;string/&gt;&lt;/value&gt;&lt;/param&gt;&lt;/params&gt;&lt;/methodCall&gt;' https://example.com/xmlrpc.php
 </code></pre>
 
-This should only return `system` methods.
-
-If the request returns methods starting with `wp.` the plugin is not active.
+This should only return the following methods:
+- `system.multicall`
+- `system.listMethods`
+- `system.getCapabilities`
 
 == Installation ==
 
@@ -34,6 +37,9 @@ If the request returns methods starting with `wp.` the plugin is not active.
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Changelog ==
+
+= 1.4.1 =
+* Updated description and tags
 
 = 1.4.0 =
 * Tested with PHP 8.0
