@@ -3,9 +3,9 @@
  * Plugin Name: Remove XML-RPC Methods
  * Plugin URI: https://gitlab.com/walterebert/wee-remove-xmlrpc-methods
  * Description: Remove all methods from the WordPress XML-RPC API.
- * Version: 1.4.1
+ * Version: 1.4.2
  * Author: Walter Ebert
- * Author URI: https://wee.press
+ * Author URI: https://walterebert.com
  * Text Domain: wee-remove-xmlrpc-methods
  * License: GPL-2.0-or-later
  * License URI: https://spdx.org/licenses/GPL-2.0-or-later.html
