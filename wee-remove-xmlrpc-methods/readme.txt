@@ -2,7 +2,7 @@
 Contributors: walterebert
 Tags: xml-rpc, xmlrpc, security
 Requires at least: 4.6
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 5.4.0
 Stable tag: 1.4.2
 License: GPL-2.0-or-later
